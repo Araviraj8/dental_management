@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Add Patient
+{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+  <h1 class="display-4">Enter details to add a new Patient</h1>
+
+  <form method="POST" action="{% url 'add_patient' %}" class="clinic-form mt-4">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="name" class="form-label">Patient Name:</label>
+      <input type="text" name="name" id="name" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="address" class="form-label">Address:</label>
+      <textarea name="address" id="address" class="form-control" required></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone_number" class="form-label">Phone Number:</label>
+      <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="date_of_birth" class="form-label">Date of Birth:</label>
+      <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="last_4_digits_ssn" class="form-label">SSN (last 4 digits):</label>
+      <input type="text" name="last_4_digits_ssn" id="last_4_digits_ssn" class="form-control" required maxlength="4">
+    </div>
+
+    <div class="form-group">
+      <label for="gender" class="form-label">Gender:</label>
+      <select name="gender" id="gender" class="form-control" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Others</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-4">
+      <button type="submit" class="btn btn-primary">Add Patient</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Add Clinic
+{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+  <h1 class="display-4">Enter details to add a new Clinic</h1>
+
+  <form method="POST" action="{% url 'add_clinic' %}" class="clinic-form mt-4">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="name" class="form-label">Clinic Name:</label>
+      <input type="text" name="name" id="name" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone_number" class="form-label">Phone Number:</label>
+      <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">E-mail:</label>
+      <input type="email" name="email" id="email" class="form-control" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="city" class="form-label">City:</label>
+      <input type="text" name="city" id="city" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="state" class="form-label">State:</label>
+      <input type="text" name="state" id="state" class="form-control" required>
+    </div>
+    
+    <div class="form-group mt-4">
+      <button type="submit" class="btn btn-primary">Add Clinic</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

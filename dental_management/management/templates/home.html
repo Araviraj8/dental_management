@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    Home Page 
+{% endblock %}
+
+{% block content %}
+<!-- Add mt-5 class for large margin between navbar and content -->
+<div class="text-center mt-5">
+    <h1 class="display-4">Welcome to Bright Smile Dental Management</h1>
+    
+    <p class="lead">
+        Welcome to the Clinic Management System. Here you can manage clinics, doctors, and patients with ease. Our system is designed to help you keep track of important information and make administrative tasks simple and efficient.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3">
+        <a href="{% url 'clinics_list' %}" class="btn btn-primary">Clinics List</a>
+        <a href="{% url 'doctors_list' %}" class="btn btn-primary">Doctors List</a>
+        <a href="{% url 'patients_list' %}" class="btn btn-primary">Patients List</a>
+    </div>
+</div>
+{% endblock %}

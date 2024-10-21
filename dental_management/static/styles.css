@@ -1,0 +1,87 @@
+body {
+  padding-top: 80px;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: #ffffff !important;
+}
+
+.navbar-nav.ms-auto .nav-item {
+  margin-left: 15px;
+}
+
+.navbar-text {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.container {
+  margin-top: 40px;
+}
+
+a {
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+body {
+  padding-top: 80px;
+  font-family: Arial, sans-serif;
+  color: #EF5A6F;
+}
+
+.navbar {
+  background-color: #536493 !important;
+}
+
+.navbar-brand, .nav-link {
+  color: #ffffff !important;
+}
+
+.btn-primary {
+  background-color: #536493 !important;
+  border-color: #536493 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover {
+  background-color: #3c4d6b !important;
+  border-color: #3c4d6b !important;
+  color: #EF5A6F !important;
+}
+
+a {
+  color: #EF5A6F !important;
+}
+
+a:hover {
+  color: #ffffff !important;
+}
+
+.card-title, .form-label {
+  color: #EF5A6F !important;
+}
+
+.table {
+  background-color: #536493 !important;
+  color: #ffffff !important;
+}
+
+.table thead {
+  background-color: #536493 !important;
+  color: #ffffff !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #6a79b1 !important;
+}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Doctor Details{% endblock %}
+
+{% block content %}
+<!-- Add mt-5 class for large margin between navbar and content -->
+<div class="container mt-5">
+    <h1 class="display-4 text-center">Doctor Details</h1>
+    <div class="card p-4">
+        <div id="doctor-display" class="doctor-section">
+            <p><strong>NPI:</strong> {{ doctor.NPI }}</p>
+            <p><strong>Name:</strong> {{ doctor.name }}</p>
+            <p><strong>Email:</strong> {{ doctor.email }}</p>
+            <p><strong>Phone Number:</strong> {{ doctor.phone_number }}</p>
+            <p><strong>Specialty:</strong> {{ doctor.specialties.first.name }}</p>
+            <button id="edit-btn" class="btn btn-primary" onclick="toggleEdit()">Edit</button>
+        </div>
+
+        <div id="doctor-edit" class="doctor-section" style="display:none;">
+            <form method="POST" class="doctor-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="edit-npi" class="form-label">NPI:</label>
+                    <input type="text" name="npi" id="edit-npi" class="form-control" value="{{ doctor.NPI }}" required />
+                </div>
+                <div class="form-group">
+                    <label for="edit-name" class="form-label">Name:</label>
+                    <input type="text" name="name" id="edit-name" class="form-control" value="{{ doctor.name }}" required />
+                </div>
+                <div class="form-group">
+                    <label for="edit-email" class="form-label">Email:</label>
+                    <input type="email" name="email" id="edit-email" class="form-control" value="{{ doctor.email }}" required />
+                </div>
+                <div class="form-group">
+                    <label for="edit-phone" class="form-label">Phone Number:</label>
+                    <input type="text" name="phone_number" id="edit-phone" class="form-control" value="{{ doctor.phone_number }}" required />
+                </div>
+                <div class="form-group">
+                    <label for="edit-specialty" class="form-label">Specialty:</label>
+                    <select name="specialties" id="edit-specialty" class="form-control" required>
+                        {% for specialty in specialties %}
+                        <option value="{{ specialty.id }}" {% if doctor.specialties.first.id == specialty.id %}selected{% endif %}>{{ specialty.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-actions mt-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h2 class="mt-5">Affiliated Clinics</h2>
+    <table class="table table-striped table-bordered mt-3">
+        <thead></thead>
+            <tr style="background-color: #536493; color: white;">
+                <th>Clinic Name</th>
+                <th>Phone Number</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for clinic in affiliated_clinics %}
+            <tr>
+                <td>{{ clinic.name }}</td>
+                <td>{{ clinic.phone_number }}</td>
+                <td>{{ clinic.city }}</td>
+                <td>{{ clinic.state }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No affiliated clinics.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleEdit() {
+        var displaySection = document.getElementById('doctor-display');
+        var editSection = document.getElementById('doctor-edit');
+        if (displaySection.style.display === 'none') {
+            displaySection.style.display = 'block';
+            editSection.style.display = 'none';
+        } else {
+            displaySection.style.display = 'none';
+            editSection.style.display = 'block';
+        }
+    }
+</script>
+
+{% endblock %}
